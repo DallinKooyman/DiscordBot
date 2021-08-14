@@ -9,9 +9,13 @@
   "author": "Decoy",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "@discordjs/builders": "^0.5.0",
+    "@discordjs/rest": "0.1.0-canary.0",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "mysql": "^2.18.1",
-    "node-gyp": "^7.1.0"
+    "node-gyp": "^7.1.0",
+    "timers": "^0.1.1"
   }
 }
