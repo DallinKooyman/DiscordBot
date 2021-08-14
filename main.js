@@ -15,6 +15,7 @@ const PREFIX = "!GM ";
 const commandhandler = require("./commands")
 
 const commands = new Collection() //Extends JS Map
+const commandsJSON = [];
 const fs = require('fs');
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
@@ -23,6 +24,7 @@ for (const file of commandFiles) {
 		// set a new item in the Collection
 		// with the key as the command name and the value as the exported module
     commands.set(command.data.name, command);
+		commandsJSON.push(command.data.toJSON());
 }
 
 bot.once('ready', () => {
@@ -41,21 +43,21 @@ bot.once('ready', () => {
 
 const rest = new REST({ version: '9' }).setToken(token);
 
-// (async () => {
-// 	try {
-// 		console.log('Started refreshing application (/) commands.');
+(async () => {
+	try {
+		console.log('Started refreshing application (/) commands.');
 
-// 		await rest.put(
-// 			//Routes.applicationGuildCommands(BOT_ID, TEST_GUILD_ID),
-//       Routes.applicationCommands(BOT_ID), //for testing on multiple servers
-// 			{ body: commands.toJSON() },
-// 		);
+		await rest.put(
+			//Routes.applicationGuildCommands(BOT_ID, TEST_GUILD_ID),
+      Routes.applicationCommands(BOT_ID), //for testing on multiple servers
+			{ body: commandsJSON },
+		);
 
-// 		console.log('Successfully reloaded application (/) commands.');
-// 	} catch (error) {
-// 		console.error(error);
-// 	}
-// })();
+		console.log('Successfully reloaded application (/) commands.');
+	} catch (error) {
+		console.error(error);
+	}
+})();
 
 bot.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
