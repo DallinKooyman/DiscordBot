@@ -17,7 +17,4 @@ for (const file of eventFiles) {
 	}
 }
 
-const commandhandler = require("./commandHandler")
-
-bot.on('messageCreate', commandhandler);
 bot.login(token);
