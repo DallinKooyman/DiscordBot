@@ -9,7 +9,8 @@ module.exports = {
     .addStringOption(option =>
       option.setName("player_name")
         .setDescription('The name of the player whose rank you want. (Note: Gets highest rank player with that name)')
-        .setRequired(true))
+        .setRequired(true)
+    )
     .addIntegerOption(option =>
       option.setName('leaderboard')
         .setDescription('Specify the match type, defaults to 1v1 random match type')
@@ -20,7 +21,12 @@ module.exports = {
         .addChoice('Team Deathmatch', 2)
         .addChoice('1v1 Empire Wars', 13)
         .addChoice('Team Empire Wars', 14)
-        ),
+    )
+    .addBooleanOption(option => 
+      option.setName('flag')
+        .setDescription('Choose whether to display the players flag or not, default is Yes')
+        .setRequired(false)
+    ),
 	async execute(interaction) {
     var leaderboard = 3; //Techinlly not needed as the api assumes its 3
     if (interaction.options.getInteger('leaderboard') != null){
@@ -28,12 +34,12 @@ module.exports = {
     }
     let leaderboardAsString = 'leaderboard_id=' + leaderboard.toString();
     let playername = 'search=' + interaction.options.getString('player_name')
-    let flag = false;
+    let flag = 'flag=' + interaction.options.getBoolean('flag');
 
     const options = {
       hostname: 'aoe2.net',
       port: 443,
-      path: PATH + leaderboardAsString + '&' + playername + '&' + 'flag=true',
+      path: PATH + leaderboardAsString + '&' + playername + '&' + flag,
       method: 'GET'
     }
 
