@@ -13,7 +13,6 @@ const BOT_ID = process.env.BOT_ID;
 const TEST_GUILD_ID=process.env.BOT_TESTING_GUILD_ID;
 bot.login(token);
 
-const PREFIX = "!GM ";
 const commandhandler = require("./commands")
 
 const slashcommands = new Collection() 
