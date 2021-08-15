@@ -85,6 +85,10 @@ module.exports = {
     }
     else if (interaction.options.getSubcommand() == 'steam_lookup'){
       playeridentifer = 'steam_id=' + interaction.options.getString('steam_id')
+      if (interaction.options.getString('steam_id').length != 17){
+        interaction.reply("That is not a valid steam id")
+        return;
+      }
       options = {
         hostname: 'aoe2.net',
         port: 443,
