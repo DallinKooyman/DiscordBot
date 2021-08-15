@@ -1,11 +1,11 @@
-const Discord = require('discord.js')
-const { Collection, Intents, } = require('discord.js');
-const bot = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-//const bot = new Discord.Client();
+const { Client, Collection, Intents, Discord } = require('discord.js');
+const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+
 require('dotenv').config();
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+
 const fs = require('fs');
 
 const token = process.env.BOT_TOKEN;
@@ -14,6 +14,7 @@ const TEST_GUILD_ID=process.env.BOT_TESTING_GUILD_ID;
 bot.login(token);
 
 const commandhandler = require("./commands")
+
 
 const slashcommands = new Collection() 
 const slashcommandsJSON = [];
@@ -26,7 +27,6 @@ for (const file of slashcommandFiles) {
     slashcommands.set(command.data.name, command);
 		slashcommandsJSON.push(command.data.toJSON());
 }
-
 
 
 bot.once('ready', () => {
@@ -54,12 +54,13 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 bot.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
-
+  
 	const { commandName: slashcommandName } = interaction;
 
 	if (!slashcommands.has(slashcommandName)) return;
 	try {
 		await slashcommands.get(slashcommandName).execute(interaction);
+
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
@@ -67,4 +68,3 @@ bot.on('interactionCreate', async interaction => {
 });
 
 bot.on('messageCreate', commandhandler);
-
