@@ -16,6 +16,7 @@ module.exports = function (msg) {
     let args = msg.content.slice(PREFIX.length).split(' ');
     commands.get(args[0].toLowerCase()).execute(msg, args);
   }
-  else {  commands.get("eastereggreplies").execute(msg);
+  else {  
+    commands.get("eastereggreplies").execute(msg);
   }
 }
