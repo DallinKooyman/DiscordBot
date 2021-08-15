@@ -11,7 +11,18 @@ const fs = require('fs');
 const token = process.env.BOT_TOKEN;
 const BOT_ID = process.env.BOT_ID;
 const TEST_GUILD_ID=process.env.BOT_TESTING_GUILD_ID;
-bot.login(token);
+
+
+
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		bot.once(event.name, (...args) => event.execute(...args, bot));
+	} else {
+		bot.on(event.name, (...args) => event.execute(...args, bot));
+	}
+}
 
 const commandhandler = require("./commands")
 
@@ -28,11 +39,6 @@ for (const file of slashcommandFiles) {
 		slashcommandsJSON.push(command.data.toJSON());
 }
 
-
-bot.once('ready', () => {
-  console.log('This bot is online!');
-  bot.user.setActivity('Aoe2: The Electric Boogaloo')
-})
 
 const rest = new REST({ version: '9' }).setToken(token);
 
@@ -68,3 +74,4 @@ bot.on('interactionCreate', async interaction => {
 });
 
 bot.on('messageCreate', commandhandler);
+bot.login(token);
