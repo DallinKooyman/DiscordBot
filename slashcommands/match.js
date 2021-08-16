@@ -2,9 +2,9 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const https = require('https')
 const PATH = '/api/nightbot/match?';
 
-async function secondRequest(options, interaction){
+async function secondRequest(options, interaction) {
   options.path += '&leaderboard_id=4';
-  var reply ='';
+  var reply = '';
   const secondreq = https.request(options, res => {
     //console.log(`statusCode: ${res.statusCode}`)
     res.on('data', chunk => {
@@ -26,7 +26,6 @@ async function secondRequest(options, interaction){
   })
 
   secondreq.end()
-
 }
 
 module.exports = {
@@ -120,7 +119,6 @@ module.exports = {
         reply += chunk;
       })
       res.on('end', () => {
-        console.log(reply);
         if (reply === "Player not found") {
           interaction.reply(reply + '\nChecking other leaderboards')
           secondRequest(options, interaction)
@@ -138,5 +136,3 @@ module.exports = {
     req.end()
   },
 };
-
-
