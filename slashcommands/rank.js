@@ -3,9 +3,9 @@ const https = require('https')
 const PATH = '/api/nightbot/rank?';
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('rank')
-		.setDescription('Gets the rank of player using their name or steam id')
+  data: new SlashCommandBuilder()
+    .setName('rank')
+    .setDescription('Gets the rank of player using their name or steam id')
     .addSubcommand(playername =>
       playername.setName('playername')
         .setDescription('The name of the player whose rank you want. (Note: Gets highest rank player with that name)')
@@ -25,9 +25,9 @@ module.exports = {
             .addChoice('1v1 Empire Wars', 13)
             .addChoice('Team Empire Wars', 14)
         )
-        .addBooleanOption(option => 
+        .addBooleanOption(option =>
           option.setName('flag')
-            .setDescription('Choose whether to display the players flag or not, default is Yes')
+            .setDescription('Choose whether to display the players flag or not, default is True')
             .setRequired(false)
         )
     )
@@ -51,30 +51,30 @@ module.exports = {
             .addChoice('1v1 Empire Wars', 13)
             .addChoice('Team Empire Wars', 14)
         )
-        .addBooleanOption(option => 
+        .addBooleanOption(option =>
           option.setName('flag')
             .setDescription('Choose whether to display the players flag or not, default is True')
             .setRequired(false)
         ),
     ),
-	async execute(interaction) {
+  async execute(interaction) {
     var leaderboard = 3;
     var flag = true;
     var options = {};
     var playeridentifer = ''; //could be steam id or player name
 
-    if (interaction.options.getInteger('leaderboard') != null){
+    if (interaction.options.getInteger('leaderboard') != null) {
       leaderboard = interaction.options.getInteger('leaderboard');
     }
 
     var leaderboardAsString = 'leaderboard_id=' + leaderboard.toString();
 
-    if (interaction.options.getBoolean('flag') != null){
+    if (interaction.options.getBoolean('flag') != null) {
       flag = interaction.options.getBoolean('flag');
     }
     var flagAsString = 'flag=' + flag.toString();
 
-    if (interaction.options.getSubcommand() == 'playername'){
+    if (interaction.options.getSubcommand() == 'playername') {
       playeridentifer = 'search=' + interaction.options.getString('player_name')
       options = {
         hostname: 'aoe2.net',
@@ -83,9 +83,9 @@ module.exports = {
         method: 'GET'
       }
     }
-    else if (interaction.options.getSubcommand() == 'steam_lookup'){
+    else if (interaction.options.getSubcommand() == 'steam_lookup') {
       playeridentifer = 'steam_id=' + interaction.options.getString('steam_id')
-      if (interaction.options.getString('steam_id').length != 17){
+      if (interaction.options.getString('steam_id').length != 17) {
         interaction.reply("That is not a valid steam id")
         return;
       }
@@ -107,7 +107,7 @@ module.exports = {
       })
       res.on('end', () => {
         console.log(reply);
-        if (reply === "Player not found"){
+        if (reply === "Player not found") {
           interaction.reply(reply + '\nPlayer must have played a match in that match type recently')
         }
         else {
@@ -115,13 +115,13 @@ module.exports = {
         }
       });
     })
-    
+
     req.on('error', error => {
       console.error(error)
     })
-    
+
     req.end()
-	},
+  },
 };
 
 
