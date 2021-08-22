@@ -1,7 +1,7 @@
 {
-  "name": "discordbot",
-  "version": "0.0.1",
-  "description": "",
+  "name": "AOE Ranking Bot",
+  "version": "1.0.0",
+  "description": "This bot grabs the ranking of players from Age of Empires 2: Definitive Edition using API from aoe2.net",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
