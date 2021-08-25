@@ -25,8 +25,8 @@ const rest = new REST({ version: '9' }).setToken(token);
 		console.log('Started refreshing application (/) commands.');
 
 		await rest.put(
-			Routes.applicationGuildCommands(BOT_ID, TEST_GUILD_ID), //for testing on one server
-			//Routes.applicationCommands(BOT_ID), //for testing on multiple servers
+			//Routes.applicationGuildCommands(BOT_ID, TEST_GUILD_ID), //for testing on one server
+			Routes.applicationCommands(BOT_ID), //for testing on multiple servers
 			{ body: slashcommandsJSON },
 		);
 
