@@ -1,6 +1,6 @@
 {
   "name": "AOE Ranking Bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This bot grabs the ranking of players from Age of Empires 2: Definitive Edition using API from aoe2.net",
   "main": "main.js",
   "scripts": {
