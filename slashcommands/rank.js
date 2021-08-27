@@ -76,12 +76,6 @@ module.exports = {
 
     if (interaction.options.getSubcommand() == 'playername') {
       playeridentifer = 'search=' + interaction.options.getString('player_name')
-      options = {
-        hostname: 'aoe2.net',
-        port: 443,
-        path: PATH + leaderboardAsString + '&' + playeridentifer + '&' + flagAsString,
-        method: 'GET'
-      }
     }
     else if (interaction.options.getSubcommand() == 'steam_lookup') {
       playeridentifer = 'steam_id=' + interaction.options.getString('steam_id')
@@ -89,12 +83,13 @@ module.exports = {
         interaction.reply("That is not a valid steam id")
         return;
       }
-      options = {
-        hostname: 'aoe2.net',
-        port: 443,
-        path: PATH + leaderboardAsString + '&' + playeridentifer + '&' + flagAsString,
-        method: 'GET'
-      }
+    }
+
+    options = {
+      hostname: 'aoe2.net',
+      port: 443,
+      path: PATH + leaderboardAsString + '&' + playeridentifer + '&' + flagAsString,
+      method: 'GET'
     }
 
     var reply = '';
