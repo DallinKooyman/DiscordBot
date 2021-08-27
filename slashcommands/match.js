@@ -88,7 +88,12 @@ module.exports = {
     var colorAsString = 'color=' + color.toString();
 
     if (interaction.options.getSubcommand() == 'playername') {
-      playeridentifer = 'search=' + interaction.options.getString('player_name')
+      if (interaction.options.getString('player_name').toLowerCase() === "yogi_aoe"){
+        playeridentifer = 'steam_id=' + "76561199132731792";
+      }
+      else {
+        playeridentifer = 'search=' + interaction.options.getString('player_name')
+      }
       options = {
         hostname: 'aoe2.net',
         port: 443,
