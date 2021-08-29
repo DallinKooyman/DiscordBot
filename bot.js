@@ -1,5 +1,11 @@
+const { Console } = require('console');
 const { Client, Intents } = require('discord.js');
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+
+const output = "./Logs/output.log";
+const erorrOutput = "./Logs/error.log"
+
+const logger = new Console({ stdout: output, stderr: errorOutput });
 
 require('dotenv').config();
 
