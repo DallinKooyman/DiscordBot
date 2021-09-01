@@ -11,10 +11,10 @@ function getCurrentMoment(){
 
   // current date
   // adjust 0 before single digit date
-  let day = ("0" + date.getDate()).slice(-2);
+  let day = ("0" + date.getDate());
   
-  // current month
-  let month = ("0" + (date.getMonth() + 1)).slice(-2);
+  // current month (Jan is 0, Dec is 11 so 1 is added)
+  let month = ("0" + (date.getMonth() + 1));
   
   // current year
   let year = date.getFullYear();
@@ -23,7 +23,7 @@ function getCurrentMoment(){
   let hours = date.getHours();
   
   // current minutes
-  let minutes = date.getMinutes();
+  let minutes = ("0" + date.getMinutes()).slice(-2);
   
   // current seconds
   let seconds = ("0" + (date.getSeconds() + 1)).slice(-2);
