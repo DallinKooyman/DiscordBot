@@ -59,6 +59,7 @@ module.exports = {
 		try {
 			await slashcommands.get(slashcommandName).execute(interaction);
 		} catch (error) {
+			logger.error(logMsg + slashcommandName);
 			logger.error(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}

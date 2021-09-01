@@ -27,6 +27,7 @@ async function secondRequest(options, interaction) {
   secondreq.on('error', error => {
     logger.error("Error in match.js in second request Error is:");
     logger.error(error);
+    logger.error("Path: " + options.path);
   })
 
   secondreq.end()
