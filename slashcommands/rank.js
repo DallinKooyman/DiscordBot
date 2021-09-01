@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const https = require('https')
 const PATH = '/api/nightbot/rank?';
+var logger = require("../Logs/Log")
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -78,9 +79,10 @@ module.exports = {
       playeridentifer = 'search=' + interaction.options.getString('player_name')
     }
     else if (interaction.options.getSubcommand() == 'steam_lookup') {
-      playeridentifer = 'steam_id=' + interaction.options.getString('steam_id')
+      playeridentifer = 'steam_id=' + interaction.options.getString('steam_id');
       if (interaction.options.getString('steam_id').length != 17) {
-        interaction.reply("That is not a valid steam id")
+        interaction.reply("That is not a valid steam id");
+        logger.log("Invalid steam id:" + interaction.options.getString('steam_id'));
         return;
       }
     }
@@ -94,25 +96,26 @@ module.exports = {
 
     var reply = '';
 
-    //console.log(options.path);
     const req = https.request(options, res => {
-      //console.log(`statusCode: ${res.statusCode}`)
       res.on('data', chunk => {
         reply += chunk;
       })
       res.on('end', () => {
-        console.log(reply);
         if (reply === "Player not found") {
-          interaction.reply(reply + '\nPlayer must have played a match in that match type recently')
+          interaction.reply(reply + '\nPlayer must have played a match in that match type recently');
+          logger.log("Player wasn't found with path: " + options.path);
         }
         else {
+          logger.log("Path: " + options.path);
           interaction.reply(reply);
         }
       });
     })
 
     req.on('error', error => {
-      console.error(error)
+      logger.error("Error in rank.js during request. Error is:");
+      logger.error(error);
+      logger.error("Path: " + options.path);
     })
 
     req.end()

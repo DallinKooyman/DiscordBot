@@ -1,28 +1,33 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const https = require('https')
 const PATH = '/api/nightbot/match?';
+var logger = require("../Logs/Log")
 
 async function secondRequest(options, interaction) {
   options.path += '&leaderboard_id=4';
-  var reply = '';
+  var reply = "";
   const secondreq = https.request(options, res => {
     //console.log(`statusCode: ${res.statusCode}`)
     res.on('data', chunk => {
       reply += chunk;
     })
     res.on('end', () => {
-      console.log(reply);
+      logger.log(reply);
       if (reply === "Player not found") {
         interaction.followUp(reply + '\nPlayer must be ranked recently')
+        logger.log("Wasn't able to find player after checking different leaderboards");
       }
       else {
         interaction.followUp(reply);
       }
+      logger.log("Path: " + options.path);
     });
   })
 
   secondreq.on('error', error => {
-    console.error(error)
+    logger.error("Error in match.js in second request Error is:");
+    logger.error(error);
+    logger.error("Path: " + options.path);
   })
 
   secondreq.end()
@@ -112,9 +117,7 @@ module.exports = {
 
     var reply = '';
 
-    //console.log(options.path);
     const req = https.request(options, res => {
-      //console.log(`statusCode: ${res.statusCode}`)
       res.on('data', chunk => {
         reply += chunk;
       })
@@ -124,13 +127,16 @@ module.exports = {
           secondRequest(options, interaction)
         }
         else {
+          logger.log("Path: " + options.path);
           interaction.reply(reply);
         }
       });
     })
 
     req.on('error', error => {
-      console.error(error)
+      logger.error("Error in match.js during first request. Error is:");
+      logger.error(error);
+      logger.error("Path: " + options.path);
     })
 
     req.end()
