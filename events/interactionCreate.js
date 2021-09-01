@@ -43,12 +43,23 @@ module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction) {
 		if (!interaction.isCommand()) return;
-
 		const { commandName: slashcommandName } = interaction;
 		if (!slashcommands.has(slashcommandName)) return;
+		var logMsg = "";
+		if (interaction.inGuild()){
+			let guildInfo = "(Guild ID: " + interaction.guildId + ") " + interaction.guild.name + "'s "
+			let playerInfo = interaction.member.nickname + " (ID: " + (interaction.member.id) + ") called ";
+			logMsg = guildInfo + playerInfo;
+		}
+		else {
+			logMsg = interaction.user.username + " (ID " + interaction.user.id + ") called ";
+		}
+		
+		logger.log(logMsg + slashcommandName);
 		try {
 			await slashcommands.get(slashcommandName).execute(interaction);
 		} catch (error) {
+			logger.error(logMsg + slashcommandName);
 			logger.error(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}

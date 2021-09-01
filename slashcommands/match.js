@@ -5,7 +5,7 @@ var logger = require("../Logs/Log")
 
 async function secondRequest(options, interaction) {
   options.path += '&leaderboard_id=4';
-  var reply = '';
+  var reply = "";
   const secondreq = https.request(options, res => {
     //console.log(`statusCode: ${res.statusCode}`)
     res.on('data', chunk => {
@@ -16,19 +16,18 @@ async function secondRequest(options, interaction) {
       if (reply === "Player not found") {
         interaction.followUp(reply + '\nPlayer must be ranked recently')
         logger.log("Wasn't able to find player after checking different leaderboards");
-        logger.log("Here is the path:");
-        logger.log(options.path);
-
       }
       else {
         interaction.followUp(reply);
       }
+      logger.log("Path: " + options.path);
     });
   })
 
   secondreq.on('error', error => {
     logger.error("Error in match.js in second request Error is:");
     logger.error(error);
+    logger.error("Path: " + options.path);
   })
 
   secondreq.end()
@@ -128,14 +127,16 @@ module.exports = {
           secondRequest(options, interaction)
         }
         else {
+          logger.log("Path: " + options.path);
           interaction.reply(reply);
         }
       });
     })
 
     req.on('error', error => {
-      logger.error("Error in match.js during first request. Error is:")
-      logger.error(error)
+      logger.error("Error in match.js during first request. Error is:");
+      logger.error(error);
+      logger.error("Path: " + options.path);
     })
 
     req.end()
