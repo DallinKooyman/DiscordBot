@@ -1,4 +1,3 @@
 events/interactionCreate.js
 node_modules/
 .env
-interactionCreate.js

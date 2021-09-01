@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const https = require('https')
 const PATH = '/api/nightbot/rank?';
+var logger = require("../Logs/Log")
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -94,14 +95,12 @@ module.exports = {
 
     var reply = '';
 
-    //console.log(options.path);
     const req = https.request(options, res => {
-      //console.log(`statusCode: ${res.statusCode}`)
       res.on('data', chunk => {
         reply += chunk;
       })
       res.on('end', () => {
-        console.log(reply);
+        logger.log(reply);
         if (reply === "Player not found") {
           interaction.reply(reply + '\nPlayer must have played a match in that match type recently')
         }
@@ -112,7 +111,7 @@ module.exports = {
     })
 
     req.on('error', error => {
-      console.error(error)
+      logger.error(error)
     })
 
     req.end()

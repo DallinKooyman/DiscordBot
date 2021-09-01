@@ -1,6 +1,7 @@
 const { Collection } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+
 const fs = require('fs');
 
 const slashcommands = new Collection()
@@ -8,6 +9,8 @@ const slashcommandsJSON = [];
 const BOT_ID = process.env.BOT_ID;
 const TEST_GUILD_ID = process.env.BOT_TESTING_GUILD_ID;
 const token = process.env.BOT_TOKEN;
+
+var logger = require("../Logs/Log")
 
 const slashcommandFiles = fs.readdirSync('slashcommands/').filter(file => file.endsWith('.js'))
 for (const file of slashcommandFiles) {
@@ -22,7 +25,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 (async () => {
 	try {
-		console.log('Started refreshing application (/) commands.');
+	logger.log('Started refreshing application (/) commands.');
 
 		await rest.put(
 			//Routes.applicationGuildCommands(BOT_ID, TEST_GUILD_ID), //for testing on one server
@@ -30,9 +33,9 @@ const rest = new REST({ version: '9' }).setToken(token);
 			{ body: slashcommandsJSON },
 		);
 
-		console.log('Successfully reloaded application (/) commands.');
+		logger.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 	}
 })();
 
@@ -42,13 +45,11 @@ module.exports = {
 		if (!interaction.isCommand()) return;
 
 		const { commandName: slashcommandName } = interaction;
-
 		if (!slashcommands.has(slashcommandName)) return;
 		try {
 			await slashcommands.get(slashcommandName).execute(interaction);
-
 		} catch (error) {
-			console.error(error);
+			logger.error(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	},
