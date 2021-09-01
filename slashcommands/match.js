@@ -118,9 +118,7 @@ module.exports = {
 
     var reply = '';
 
-    //console.log(options.path);
     const req = https.request(options, res => {
-      //console.log(`statusCode: ${res.statusCode}`)
       res.on('data', chunk => {
         reply += chunk;
       })
