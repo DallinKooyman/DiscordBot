@@ -1,0 +1,61 @@
+2021-09-03 15:39:53 Started refreshing application (/) commands.
+2021-09-03 15:39:53 Successfully reloaded application (/) commands.
+2021-09-03 15:39:53 This bot is online!
+2021-09-03 15:39:53 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:41:38 Started refreshing application (/) commands.
+2021-09-03 15:41:38 Successfully reloaded application (/) commands.
+2021-09-03 15:41:38 This bot is online!
+2021-09-03 15:41:38 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:42:07 Started refreshing application (/) commands.
+2021-09-03 15:42:07 Successfully reloaded application (/) commands.
+2021-09-03 15:42:07 This bot is online!
+2021-09-03 15:42:07 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:42:07 Path: /api/nightbot/matches?&76561198145120267&
+2021-09-03 15:42:55 Started refreshing application (/) commands.
+2021-09-03 15:42:55 Successfully reloaded application (/) commands.
+2021-09-03 15:42:55 This bot is online!
+2021-09-03 15:42:55 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:42:55 Path: /api/nightbot/matches?&76561198145120267&15
+2021-09-03 15:45:21 Started refreshing application (/) commands.
+2021-09-03 15:45:21 Successfully reloaded application (/) commands.
+2021-09-03 15:45:21 This bot is online!
+2021-09-03 15:45:21 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:45:21 Path: /api/nightbot/matches?&76561198145120267&start=1&5
+2021-09-03 15:46:31 Started refreshing application (/) commands.
+2021-09-03 15:46:31 Successfully reloaded application (/) commands.
+2021-09-03 15:46:31 This bot is online!
+2021-09-03 15:46:31 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:46:31 Path: /api/nightbot/matches?76561198145120267&start=1&5
+2021-09-03 15:47:21 Started refreshing application (/) commands.
+2021-09-03 15:47:21 Successfully reloaded application (/) commands.
+2021-09-03 15:47:21 This bot is online!
+2021-09-03 15:47:21 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:47:21 Path: /api/nightbot/matches?steam_id=76561198145120267&start=1&count5
+2021-09-03 15:48:44 Started refreshing application (/) commands.
+2021-09-03 15:48:44 Successfully reloaded application (/) commands.
+2021-09-03 15:48:44 This bot is online!
+2021-09-03 15:48:44 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:48:44 Path: /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count5
+2021-09-03 15:52:23 Started refreshing application (/) commands.
+2021-09-03 15:52:23 Successfully reloaded application (/) commands.
+2021-09-03 15:52:23 This bot is online!
+2021-09-03 15:52:23 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:52:23 Path: /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count1
+2021-09-03 15:53:31 Started refreshing application (/) commands.
+2021-09-03 15:53:31 Successfully reloaded application (/) commands.
+2021-09-03 15:53:31 This bot is online!
+2021-09-03 15:53:31 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:53:31 /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count1
+2021-09-03 15:53:31 Path: /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count1
+2021-09-03 15:54:18 Started refreshing application (/) commands.
+2021-09-03 15:54:18 Successfully reloaded application (/) commands.
+2021-09-03 15:54:18 This bot is online!
+2021-09-03 15:54:18 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:54:18 /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count=5
+2021-09-03 15:54:18 Path: /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count=5
+2021-09-03 15:55:07 Started refreshing application (/) commands.
+2021-09-03 15:55:07 Successfully reloaded application (/) commands.
+2021-09-03 15:55:07 This bot is online!
+2021-09-03 15:55:07 (Guild ID: 713111732553252904) BotTesting's DEkoy (ID: 476214124057985045) called match_history
+2021-09-03 15:55:07 /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count=1
+2021-09-03 15:55:07 Path: /api/player/matches?game=aoe2de&steam_id=76561198145120267&start=1&count=1
