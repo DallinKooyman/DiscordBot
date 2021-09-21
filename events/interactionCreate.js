@@ -48,7 +48,7 @@ module.exports = {
 		var logMsg = "";
 		if (interaction.inGuild()){
 			let guildInfo = "(Guild ID: " + interaction.guildId + ") " + interaction.guild.name + "'s "
-			let playerInfo = interaction.member.nickname + " (ID: " + (interaction.member.id) + ") called ";
+			let playerInfo = interaction.member.displayName + " (ID: " + (interaction.member.id) + ") called ";
 			logMsg = guildInfo + playerInfo;
 		}
 		else {
